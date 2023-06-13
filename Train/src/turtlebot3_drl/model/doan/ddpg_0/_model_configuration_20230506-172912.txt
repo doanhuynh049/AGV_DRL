@@ -1,0 +1,63 @@
+device = cpu
+batch_size = 1024
+buffer_size = 1000000
+state_size = 44
+action_size = 2
+hidden_size = 512
+discount_factor = 0.99
+learning_rate = 0.0003
+tau = 0.0003
+step_time = 0.0
+loss_function = <function smooth_l1_loss at 0x7f6fe5e103a0>
+actor_noise = <turtlebot3_drl.common.ounoise.OUNoise object at 0x7f6ef80db100>
+stack_depth = 3
+frame_skip = 4
+input_size = 44
+target_actor = Actor(
+  (fa1): Linear(in_features=44, out_features=512, bias=True)
+  (fa2): Linear(in_features=512, out_features=512, bias=True)
+  (fa3): Linear(in_features=512, out_features=2, bias=True)
+)
+actor_optimizer = AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.0003
+    weight_decay: 0.01
+)
+target_critic = Critic(
+  (l1): Linear(in_features=44, out_features=256, bias=True)
+  (l2): Linear(in_features=2, out_features=256, bias=True)
+  (l3): Linear(in_features=512, out_features=512, bias=True)
+  (l4): Linear(in_features=512, out_features=1, bias=True)
+)
+critic_optimizer = AdamW (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    eps: 1e-08
+    lr: 0.0003
+    weight_decay: 0.01
+)
+networks = [Actor(
+  (fa1): Linear(in_features=44, out_features=512, bias=True)
+  (fa2): Linear(in_features=512, out_features=512, bias=True)
+  (fa3): Linear(in_features=512, out_features=2, bias=True)
+), Actor(
+  (fa1): Linear(in_features=44, out_features=512, bias=True)
+  (fa2): Linear(in_features=512, out_features=512, bias=True)
+  (fa3): Linear(in_features=512, out_features=2, bias=True)
+), Critic(
+  (l1): Linear(in_features=44, out_features=256, bias=True)
+  (l2): Linear(in_features=2, out_features=256, bias=True)
+  (l3): Linear(in_features=512, out_features=512, bias=True)
+  (l4): Linear(in_features=512, out_features=1, bias=True)
+), Critic(
+  (l1): Linear(in_features=44, out_features=256, bias=True)
+  (l2): Linear(in_features=2, out_features=256, bias=True)
+  (l3): Linear(in_features=512, out_features=512, bias=True)
+  (l4): Linear(in_features=512, out_features=1, bias=True)
+)]
+parameters = [1024, 1000000, 44, 2, 512, 0.99, 0.0003, 0.0003, 0.0, 'AdamW', 'AdamW', 'smooth_l1_loss', 'G', False, 3, False, 3, 4]
+
